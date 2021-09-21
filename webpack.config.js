@@ -5,6 +5,7 @@ module.exports = {
     mode: 'development',
     entry: './src/index.js',
     output: {
+        publicPath: '/',
         filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
@@ -13,6 +14,11 @@ module.exports = {
         template: './public/index.html',
         filename: './index.html'
     })],
+    devServer: {
+        port: 3000,
+        hot: true,
+        historyApiFallback: { index: '/' }
+    },
     module: {
         rules: [
             {
@@ -38,6 +44,22 @@ module.exports = {
                 test: /\.css$/i,
                 use: ["style-loader", "css-loader"],
             },
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: ['babel-loader'],
+            },
+            {
+                test: /\.txt$/,
+                use: 'raw-loader'
+            },
         ]
+    },
+    resolve: {
+        modules: [
+            path.resolve(__dirname, 'src'),
+            path.resolve(__dirname, 'node_modules'),
+        ],
+        extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx'],
     },
 }
