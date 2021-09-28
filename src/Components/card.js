@@ -1,29 +1,30 @@
-import React from "react";
+import React, { memo, useEffect } from "react";
 
-class Card extends React.PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: `task ${this.props.index}`
+const Card = (props) => {
+    useEffect(() => {
+        return () => {
+            console.log("bue bue", props.state);
         }
-    }
 
-    changeName = (index) => () => {
-        this.setState({ name: "newTaskList" });
-    }
+    }, []);
 
-    render() {
-        console.log(`card render`, this.state.name);
-        return (
-            <div>
-                <div>
-                    {`Task ${this.state.name}, is ${this.props.isDone ? 'done' : 'not done'}`};
-                </div>
-                <button onClick={this.changeName(this.props.index)}>change name</button>
+    console.log(`card render`, props.state);
+
+    return (
+        <React.Fragment>
+           <div className={"board-item__list"}>
+                <h4 className={"board-list__title"}>
+                    {props.title}
+                </h4>
+                <p>
+                    {props.description}
+                </p>
             </div>
-        )
-    }
+            {/* <button onClick={props.removeTask(props.index)}>remove task</button> */}
+        </React.Fragment>
+    )
+
 }
 
 
-export default Card
+export default memo(Card);
