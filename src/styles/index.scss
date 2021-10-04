@@ -12,6 +12,16 @@
     font-size: 12px;
 }
 
+.modal-fon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
 .modal {
     min-width: 500px;
     min-height: 300px;
@@ -23,13 +33,16 @@
     align-content: center;
     align-items: center;
     z-index: 100;
-    background-color: #474747;
+    background-color: #5c5c5c;
+    border: 2px solid #313131;
+    border-radius: 4px;
+    box-shadow: inset 0 0 20px 0 rgba(17, 13, 13, 0.8);
 }
 
 
-html {
+#root {
     font-family: Arial, Helvetica, sans-serif;
-    background: url('../img/baground.png');
+    background: url('../assets/images/baground.png');
     background-size: cover;
     width: 100vw;
     height: 100vh;
@@ -38,7 +51,7 @@ html {
     position: fixed;
     background-repeat: repeat;
 }
-html::after {
+#root::after {
     content: '';
     display: block;
     position: absolute;
@@ -73,6 +86,9 @@ h3 {
     display: flex;
     justify-content: center;
     z-index: 20;
+}
+.modul-container {
+    width: 100%;
 }
 
 .modul-container__todo {
@@ -440,17 +456,17 @@ h3 {
     border-radius: 4px;
     box-shadow: 0 0 20px 5px rgba(17, 13, 13, 1), inset 0 0 20px 0 rgba(17, 13, 13, 0.8);
 }
-.board-item:first-child {
+.board-item__red{
     border: 2px solid #e61a1a;
     border-radius: 4px;
     background-color: rgba(247, 67, 67, 0.7);
 }
-.board-item:nth-child(2) {
+.board-item__blue {
     border: 2px solid #110ebe;
     border-radius: 4px;
     background-color: rgba(66, 145, 209, 0.7);
 }
-.board-item:last-child {
+.board-item__yellow {
     border: 2px solid #c2af0a;
     border-radius: 4px;
     background-color: rgba(209, 188, 66, 0.7);
