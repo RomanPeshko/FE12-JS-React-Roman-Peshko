@@ -57,77 +57,77 @@ const CardHolder = (props) => {
 
     const ModalWindowOne = () => {
         return (
-                <div className={"modul-container"} >
-                    <div className={"modul-title"}>
-                        <label >Заголовок:</label>
-                        <input  onChange={(event) => {setNewTaskName(event.target.value)}} value={newTaskName} />
-                    </div>
-                    <div className={"modul-discription"}>
-                        <label >Описание:</label>
-                        <textarea onChange={(event) => {setNewTaskDiscription(event.target.value)}} value={newTaskDiscription} type="text" name="modul-discribe" ></textarea>
-                    </div>
-                    <div className={"bytton-modul"}>
-                        <button onClick={() => { openModal(addTask) }}   type="button" id="submitModul-add">Добавить карточку</button>
-                        <button onClick={() => { openModal(false) }} type="button" id="cancelModul-add">Отмена</button>
-                    </div>
+            <div className={"modul-container"} >
+                <div className={"modul-title"}>
+                    <label >Заголовок:</label>
+                    <input onChange={(event) => { setNewTaskName(event.target.value) }} value={newTaskName} />
                 </div>
+                <div className={"modul-discription"}>
+                    <label >Описание:</label>
+                    <textarea onChange={(event) => { setNewTaskDiscription(event.target.value) }} value={newTaskDiscription} type="text" name="modul-discribe" ></textarea>
+                </div>
+                <div className={"bytton-modul"}>
+                    <button onClick={() => { openModal(addTask) }} type="button" id="submitModul-add">Добавить карточку</button>
+                    <button onClick={() => { openModal(false) }} type="button" id="cancelModul-add">Отмена</button>
+                </div>
+            </div>
         )
     }
 
     console.log(`CardHolder render`);
     return (
-            <div className={"container"}>
-                <div className={"board-wrap"}>
-                    <BoardItem boardName={'To Do'} classAdd={'board-item__red'}>
-                        {taskList.map((task, state) => {
-                            if (state === 0) {
-                                return (
-                                    <React.Fragment key={task.id}>
-                                        <Card state={task.state} id={task.id} removeTask={removeTask} description={task.description} title={task.title} />
-                                    </React.Fragment>
-                                )
-                            } else {
-                                return
-                            }
-                        })}
-                        <button onClick={() => { openModal(ModalWindowOne) }}  type="button" className={"todo-button"}>
-                            + Добавить карточку
-                        </button>
-                    </BoardItem>
-                    <BoardItem boardName={'In Progress'} classAdd={'board-item__blue'}>
+        <div className={"container"}>
+            <div className={"board-wrap"}>
+                <BoardItem boardName={'To Do'} classAdd={'board-item__red'}>
                     {taskList.map((task, state) => {
-                            if (state === 1) {
-                                return (
-                                    <React.Fragment key={task.id}>
-                                        <Card state={task.state} id={task.id} removeTask={removeTask} description={task.description} title={task.title} />
-                                    </React.Fragment>
-                                )
-                            } else {
-                                return
-                            }
-                        })}
-                        <button onClick={() => { openModal(ModalWindowOne) }} type="button" className={"todo-button"}>
-                            + Добавить карточку
-                        </button>
-                    </BoardItem>
-                    <BoardItem boardName={'Done'} classAdd={'board-item__yellow'}>
+                        if (task.state === 0) {
+                            return (
+                                <React.Fragment key={task.id}>
+                                    <Card state={task.state} id={task.id} removeTask={removeTask} description={task.description} title={task.title} />
+                                </React.Fragment>
+                            )
+                        } else {
+                            return
+                        }
+                    })}
+                    <button onClick={() => { openModal(ModalWindowOne) }} type="button" className={"todo-button"}>
+                        + Добавить карточку
+                    </button>
+                </BoardItem>
+                <BoardItem boardName={'In Progress'} classAdd={'board-item__blue'}>
                     {taskList.map((task, state) => {
-                            if (state === 2) {
-                                return (
-                                    <React.Fragment key={task.id}>
-                                        <Card state={task.state} id={task.id} removeTask={removeTask} description={task.description} title={task.title} />
-                                    </React.Fragment>
-                                )
-                            } else {
-                                return
-                            }
-                        })}
-                        <button onClick={() => { openModal(ModalWindowOne) }} type="button" className={"todo-button"}>
-                            + Добавить карточку
-                        </button>
-                    </BoardItem>
-                </div>
+                        if (task.state === 1) {
+                            return (
+                                <React.Fragment key={task.id}>
+                                    <Card state={task.state} id={task.id} removeTask={removeTask} description={task.description} title={task.title} />
+                                </React.Fragment>
+                            )
+                        } else {
+                            return
+                        }
+                    })}
+                    <button onClick={() => { openModal(ModalWindowOne) }} type="button" className={"todo-button"}>
+                        + Добавить карточку
+                    </button>
+                </BoardItem>
+                <BoardItem boardName={'Done'} classAdd={'board-item__yellow'}>
+                    {taskList.map((task, state) => {
+                        if (task.state === 2) {
+                            return (
+                                <React.Fragment key={task.id}>
+                                    <Card state={task.state} id={task.id} removeTask={removeTask} description={task.description} title={task.title} />
+                                </React.Fragment>
+                            )
+                        } else {
+                            return
+                        }
+                    })}
+                    <button onClick={() => { openModal(ModalWindowOne) }} type="button" className={"todo-button"}>
+                        + Добавить карточку
+                    </button>
+                </BoardItem>
             </div>
+        </div>
 
 
 
