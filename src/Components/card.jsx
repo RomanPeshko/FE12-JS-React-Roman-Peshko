@@ -1,4 +1,5 @@
 import React, { memo, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Card = (props) => {
     useEffect(() => {
@@ -13,6 +14,7 @@ const Card = (props) => {
     return (
         <React.Fragment>
            <div className={"board-item__list"}>
+               <Link to={`/cards/${props.id}`}>Redact</Link>
                 <h4 className={"board-list__title"}>
                     {props.title}
                 </h4>

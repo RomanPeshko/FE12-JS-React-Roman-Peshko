@@ -7,9 +7,26 @@
     box-sizing: border-box;
 }
 
+.header,
+.footer {
+    color: rgb(19, 221, 120);
+    font-size: 86px;
+    text-align: center;
+}
+
 #root {
     padding: 100px 0;
     font-size: 12px;
+    width: 100wh;
+    height: 100vh;
+}
+.visitca {
+    font-family: relative sans-serif;
+    font-weight: 900;
+    font-size: 86px;
+    color: rgb(84, 241, 79);
+    background-color: rgba(0, 0, 0, 0.45);
+    text-align: center;
 }
 
 .modal-fon {

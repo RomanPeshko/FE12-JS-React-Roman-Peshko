@@ -45,6 +45,7 @@ const CardHolder = (props) => {
         let id = taskList.length;
         newTaskList.push({ state: 0, title: newTaskName, discription: newTaskDiscription, id: id });
         setTaskList(newTaskList);
+        setNewTaskName('');
         console.log(Object(newTaskList));
     }
 
@@ -98,7 +99,7 @@ const CardHolder = (props) => {
                             if (state === 1) {
                                 return (
                                     <React.Fragment key={task.id}>
-                                        <Card state={task.state} removeTask={removeTask} description={task.description} title={task.title} />
+                                        <Card state={task.state} id={task.id} removeTask={removeTask} description={task.description} title={task.title} />
                                     </React.Fragment>
                                 )
                             } else {
@@ -114,7 +115,7 @@ const CardHolder = (props) => {
                             if (state === 2) {
                                 return (
                                     <React.Fragment key={task.id}>
-                                        <Card state={task.state} removeTask={removeTask} description={task.description} title={task.title} />
+                                        <Card state={task.state} id={task.id} removeTask={removeTask} description={task.description} title={task.title} />
                                     </React.Fragment>
                                 )
                             } else {
