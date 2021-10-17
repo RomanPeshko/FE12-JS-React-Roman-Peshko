@@ -15,6 +15,15 @@
 }
 .pencil__openModal {
     margin-bottom: 20px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 0;
+    background-color: #d1d0d0;
+}
+.button__pencil {
+    display: flex;
+    justify-content: end;
 }
 
 .link__kanban {
@@ -403,7 +412,7 @@ h3 {
 .board-item__list:hover {
     background-color: #bbbaba;
 }
-.board-list__button i {
+.button__pencil i {
     border-radius: 50%;
     cursor: pointer;
     width: 30px;
@@ -412,12 +421,13 @@ h3 {
     align-items: center;
     justify-content: center;
     color: rgba(85, 82, 82, 0.644);
+    padding: 4px;
 }
-.board-list__button i:hover {
+.button__pencil i:hover {
     color: #000;
     background-color: rgba(255, 255, 255, 0.315);
 }
-.board-list__button i:active {
+.button__pencil i:active {
     box-shadow: inset 0 0 5px 5px rgba(87, 86, 86, 0.8);
     transform: scale(0.9);
 }
@@ -547,10 +557,13 @@ h3 {
     box-shadow: 0 0 10px 5px rgba(17, 13, 13, 0.3);
 }
 .todo-button:active {
-    box-shadow: inset 0 0 5px 5px rgba(122, 14, 14, 0.3);
+    box-shadow: inset 0 0 5px 5px rgba(0, 0, 0, 0.3);
     transform: scale(0.95);
 }
 
+.done__green {
+    background-color: #73a87c;
+}
 
 .board-progress__title {
     display: flex;

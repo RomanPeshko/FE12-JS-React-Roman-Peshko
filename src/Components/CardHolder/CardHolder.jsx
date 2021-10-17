@@ -19,16 +19,12 @@ const CardHolder = (props) => {
                 title: "Define more tags in components",
                 description: "Define more tags in components. Define more tags in components.",
                 id: 0,
-                finishDate: 0,
-                userId: 0
             },
             {
                 state: TASK_STATUS.progress,
                 title: "Add more user avatars",
                 description: "Add more user avatars. Add more user avatars.",
                 id: 1,
-                finishDate: 0,
-                userId: 0
             }])
         }).then((data) => {
             setTaskList(data);
@@ -136,7 +132,8 @@ const CardHolder = (props) => {
                                         changeName={changeName}
                                         description={task.description}
                                         title={task.title}
-                                        index={index} />
+                                        index={index} 
+                                        color={'done__green'}/>
                                 </React.Fragment>
                             )
                         } else {
