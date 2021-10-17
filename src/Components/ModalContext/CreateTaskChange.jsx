@@ -19,7 +19,7 @@ const ModalWindowChange = (props) => {
                     props.changeName(changeTaskName, changeTaskDescription, props.id); 
                     props.openModal(false)}} type="button" id="submitModul-add">Save card</button>
                 <button onClick={() => { 
-                    props.removeTask(props.id);
+                    props.removeTask(props.index);
                     props.openModal(false);
                 }} className={'remove__task'}>Remove card</button>
                 <button onClick={() => { props.openModal(false) }} type="button" id="cancelModul-add">Close</button>

@@ -38,13 +38,14 @@ const CardHolder = (props) => {
 
     const changeName = (changeTaskName, changeTaskDescription, id) => {
         let newTaskList = [...taskList];
-        newTaskList[id].title = changeTaskName;
-        newTaskList[id].description = changeTaskDescription;
+        const elementTask = newTaskList.find(x => x.id === id);
+        elementTask.title = changeTaskName;
+        elementTask.description = changeTaskDescription;
         setTaskList(newTaskList);
-        console.log(newTaskList[id].title, 'id', id );
+        console.log( 'id', id);
     }
-   
-    
+
+
     const addTask = useCallback((newTaskName, newTaskDescription, state) => {
         let id = newTaskId + 1;
         let newTaskList = [...taskList];
@@ -61,11 +62,11 @@ const CardHolder = (props) => {
         console.log(Object(newTaskList), 'id', id, 'state', state);
     }, [taskList]);
 
-    const removeTask = (id) => {
+    const removeTask = (index) => {
         let newTaskList = [...taskList];
-        newTaskList.splice(id, 1);
+        newTaskList.splice(index, 1);
         setTaskList(newTaskList);
-        console.log(id, newTaskList);
+        console.log(newTaskList);
     };
 
 
@@ -75,11 +76,19 @@ const CardHolder = (props) => {
         <div className={"container"}>
             <div className={"board-wrap"}>
                 <BoardItem boardName={'To Do'} classAdd={'board-item__red'}>
-                    {taskList.map((task) => {
+                    {taskList.map((task, index) => {
                         if (task.state === TASK_STATUS.toDo) {
                             return (
                                 <React.Fragment key={task.id}>
-                                    <Card state={task.state} id={task.id} removeTask={removeTask}  openModal={openModal} changeName={changeName} description={task.description} title={task.title} />
+                                    <Card
+                                        state={task.state}
+                                        id={task.id}
+                                        removeTask={removeTask}
+                                        openModal={openModal}
+                                        changeName={changeName}
+                                        description={task.description}
+                                        title={task.title}
+                                        index={index} />
                                 </React.Fragment>
                             )
                         } else {
@@ -91,11 +100,19 @@ const CardHolder = (props) => {
                     </button>
                 </BoardItem>
                 <BoardItem boardName={'In Progress'} classAdd={'board-item__blue'}>
-                    {taskList.map((task) => {
+                    {taskList.map((task, index) => {
                         if (task.state === TASK_STATUS.progress) {
                             return (
                                 <React.Fragment key={task.id}>
-                                    <Card state={task.state} id={task.id} removeTask={removeTask} openModal={openModal} changeName={changeName} description={task.description} title={task.title} />
+                                    <Card
+                                        state={task.state}
+                                        id={task.id}
+                                        removeTask={removeTask}
+                                        openModal={openModal}
+                                        changeName={changeName}
+                                        description={task.description}
+                                        title={task.title}
+                                        index={index} />
                                 </React.Fragment>
                             )
                         } else {
@@ -107,11 +124,19 @@ const CardHolder = (props) => {
                     </button>
                 </BoardItem>
                 <BoardItem boardName={'Done'} classAdd={'board-item__yellow'}>
-                    {taskList.map((task) => {
+                    {taskList.map((task, index) => {
                         if (task.state === TASK_STATUS.done) {
                             return (
                                 <React.Fragment key={task.id}>
-                                    <Card state={task.state} id={task.id} openModal={openModal}  removeTask={removeTask} changeName={changeName} description={task.description} title={task.title} />
+                                    <Card
+                                        state={task.state}
+                                        id={task.id}
+                                        openModal={openModal}
+                                        removeTask={removeTask}
+                                        changeName={changeName}
+                                        description={task.description}
+                                        title={task.title}
+                                        index={index} />
                                 </React.Fragment>
                             )
                         } else {

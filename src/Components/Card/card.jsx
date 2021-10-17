@@ -22,6 +22,7 @@ const Card = (props) => {
                 id={props.id} 
                 title={props.title}
                 description={props.description}
+                index={props.index}
                 removeTask={props.removeTask}/>)}}   className={'pencil__openModal'}>Redact</button>
                 <h4 className={"board-list__title"}>
                     {props.title}
