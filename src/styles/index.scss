@@ -13,6 +13,34 @@
     font-size: 86px;
     text-align: center;
 }
+.pencil__openModal {
+    margin-bottom: 20px;
+}
+
+.link__kanban {
+    font-size: 60px;
+    color: white;
+    z-index: 1000;
+    position: relative;
+    width: 100%;
+}
+
+.remove__task {
+    border-radius: 5px;
+    border: 0;
+    border: 2px solid transparent;
+    background-color: rgba(253, 0, 0, 0.7);
+    box-shadow: 0 0 20px 0 rgba(17, 13, 13, 1);
+    transition: 0.3s;
+}
+.remove__task:hover {
+    cursor: pointer;
+    border: 2px solid rgba(95, 9, 9, 0.7);
+}
+.remove__task:active {
+    box-shadow: inset 0 0 20px 0 rgba(17, 13, 13, 0.8);
+    transform: scale(0.9);
+}
 
 #root {
     padding: 100px 0;

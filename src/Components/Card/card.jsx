@@ -1,20 +1,28 @@
 import React, { memo, useEffect } from "react";
 import { Link } from "react-router-dom";
+import CreateTaskChange from "Components/ModalContext/CreateTaskChange"
 
 const Card = (props) => {
     useEffect(() => {
         return () => {
-            console.log("bue bue", props.state);
+            console.log("bue bue id", props.id);
         }
 
     }, []);
+    
 
-    console.log(`card render`, props.state);
+    console.log(`card render`, props.id);
 
     return (
         <React.Fragment>
            <div className={"board-item__list"}>
-               <Link to={`/cards/${props.id}`}>Redact</Link>
+               <button onClick={() => { props.openModal(<CreateTaskChange  
+                openModal={props.openModal} 
+                changeName={props.changeName}
+                id={props.id} 
+                title={props.title}
+                description={props.description}
+                removeTask={props.removeTask}/>)}}   className={'pencil__openModal'}>Redact</button>
                 <h4 className={"board-list__title"}>
                     {props.title}
                 </h4>

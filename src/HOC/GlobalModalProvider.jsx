@@ -1,4 +1,4 @@
-import React, {useEffect, memo, useRef, useState} from "react";
+import React, { useEffect, memo, useRef, useState } from "react";
 import ModalWindow from "../Components/ModalWindow";
 import CardHolder from "../Components/CardHolder/CardHolder";
 
@@ -9,11 +9,11 @@ const GlobalModalProvider = (props) => {
 
   return (
     <React.Fragment>
-      {modalContent &&
-      <ModalWindow>
-        {modalContent}
-      </ModalWindow>}
       <ModalContext.Provider value={setModalContent}>
+        {modalContent &&
+          <ModalWindow>
+            {modalContent}
+          </ModalWindow>}
         {props.children}
       </ModalContext.Provider>
     </React.Fragment>

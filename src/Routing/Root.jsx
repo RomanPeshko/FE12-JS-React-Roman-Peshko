@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import CardHolder from "../Components/CardHolder/CardHolder";
+import { Link } from "react-router-dom";
 
 const RootRouter = () => {
     return (
@@ -18,12 +19,12 @@ const RootRouter = () => {
                 </Route>
                 <Route exact path={"/"}>
                     <div className={'visitca'}>
-                        Добро Пожаловать
+                        <Link to={"/cards"} className={"link__kanban"}>Kanban</Link>
                     </div>
                 </Route>
-                <Route>
-                    <Redirect to={"/cards"}/>
-                </Route>
+                {/* <Route path={"/"}>
+                    <Redirect to={"/cards"} />
+                </Route> */}
             </Switch>
         </React.Fragment>
     )
