@@ -4,7 +4,7 @@ import { store } from "store/initStore";
 
 const GlobalStoreProvider = (props) => {
     return (
-        <Provider store= {store}>
+        <Provider store={store}>
             {props.children}
         </Provider>
     )

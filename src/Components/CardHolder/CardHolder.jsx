@@ -4,10 +4,16 @@ import BoardItem from "../Board/BoardItem";
 import { ModalContext } from "../../HOC/GlobalModalProvider";
 import ModalWindowOne from "../ModalContext/CreateTaskAdd";
 import { TASK_STATUS } from "constants/taskStatus";
+import { useDispatch, useSelector } from "react-redux";
+import { cardListSelector } from "store/selectors/cardsList";
+import { newCard } from "store/action/cardsListNew";
+import { changeCard } from "store/action/cardsListChange";
 
 const CardHolder = (props) => {
     const openModal = useContext(ModalContext);
-    const [taskList, setTaskList] = useState([]);
+    // const [taskList, setTaskList] = useState([]);
+    const taskList = useSelector(cardListSelector);
+    const dispatch = useDispatch();
     const [newTaskId, setNewTaskId] = useState(2);
 
 
@@ -27,38 +33,29 @@ const CardHolder = (props) => {
                 id: 1,
             }])
         }).then((data) => {
-            setTaskList(data);
         })
     }, []);
 
 
     const changeName = (changeTaskName, changeTaskDescription, id) => {
-        let newTaskList = [...taskList];
-        const elementTask = newTaskList.find(x => x.id === id);
-        elementTask.title = changeTaskName;
-        elementTask.description = changeTaskDescription;
-        setTaskList(newTaskList);
-        console.log( 'id', id);
+        dispatch(changeCard(changeTaskName, changeTaskDescription, id))
+        // let newTaskList = [...taskList];
+        // const elementTask = newTaskList.find(x => x.id === id);
+        // elementTask.title = changeTaskName;
+        // elementTask.description = changeTaskDescription;
+        // setTaskList(newTaskList);
+        // console.log('id', id);
     }
 
 
     const addTask = useCallback((newTaskName, newTaskDescription, state) => {
         let id = newTaskId + 1;
-        let newTaskList = [...taskList];
-        newTaskList.push(
-            {
-                state: state,
-                title: newTaskName,
-                description: newTaskDescription,
-                id: id
-            }
-        );
         setNewTaskId(id);
-        setTaskList(newTaskList);
-        console.log(Object(newTaskList), 'id', id, 'state', state);
-    }, [taskList]);
+        dispatch(newCard(newTaskName, newTaskDescription, state, id));
+    }, []);
 
     const removeTask = (index) => {
+
         let newTaskList = [...taskList];
         newTaskList.splice(index, 1);
         setTaskList(newTaskList);
@@ -71,7 +68,7 @@ const CardHolder = (props) => {
     return (
         <div className={"container"}>
             <div className={"board-wrap"}>
-                <BoardItem boardName={'To Do'} classAdd={'board-item__red'}>
+                <BoardItem boardName={'To Do'}>
                     {taskList.map((task, index) => {
                         if (task.state === TASK_STATUS.toDo) {
                             return (
@@ -95,7 +92,7 @@ const CardHolder = (props) => {
                         + Add card
                     </button>
                 </BoardItem>
-                <BoardItem boardName={'In Progress'} classAdd={'board-item__blue'}>
+                <BoardItem boardName={'In Progress'}>
                     {taskList.map((task, index) => {
                         if (task.state === TASK_STATUS.progress) {
                             return (
@@ -119,7 +116,7 @@ const CardHolder = (props) => {
                         + Add card
                     </button>
                 </BoardItem>
-                <BoardItem boardName={'Done'} classAdd={'board-item__yellow'}>
+                <BoardItem boardName={'Done'}>
                     {taskList.map((task, index) => {
                         if (task.state === TASK_STATUS.done) {
                             return (
@@ -132,8 +129,8 @@ const CardHolder = (props) => {
                                         changeName={changeName}
                                         description={task.description}
                                         title={task.title}
-                                        index={index} 
-                                        color={'done__green'}/>
+                                        index={index}
+                                        color={'done__green'} />
                                 </React.Fragment>
                             )
                         } else {

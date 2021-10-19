@@ -14,7 +14,7 @@ const Card = (props) => {
 
     const buttonPencil = () => {
         return (
-            <div className="button__pencil">
+            <div className={"button__pencil"}>
                 <button onClick={() => {
                     props.openModal(<CreateTaskChange
                         openModal={props.openModal}
@@ -25,7 +25,7 @@ const Card = (props) => {
                         index={props.index}
                         removeTask={props.removeTask} />)
                 }} className={'pencil__openModal'}>
-                    <i class="fas fa-pen"></i>
+                    <i className={"fas fa-pen"}></i>
                 </button>
             </div>
         )

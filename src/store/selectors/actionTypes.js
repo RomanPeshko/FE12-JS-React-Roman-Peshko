@@ -1,0 +1,1 @@
+export const CARD_LIST_ACTIONS = {add: 'add card to list', change: 'change card to list'};

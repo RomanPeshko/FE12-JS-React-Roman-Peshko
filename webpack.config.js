@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -13,7 +14,8 @@ module.exports = {
     plugins: [new HtmlWebpackPlugin({
         template: './public/index.html',
         filename: './index.html',
-    })],
+    }),
+    new ReactRefreshWebpackPlugin()],
     devtool: "source-map",
     devServer: {
         port: 3000,
