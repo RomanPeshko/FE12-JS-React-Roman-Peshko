@@ -39,20 +39,14 @@ const CardHolder = (props) => {
 
     const changeName = (changeTaskName, changeTaskDescription, id) => {
         dispatch(changeCard(changeTaskName, changeTaskDescription, id))
-        // let newTaskList = [...taskList];
-        // const elementTask = newTaskList.find(x => x.id === id);
-        // elementTask.title = changeTaskName;
-        // elementTask.description = changeTaskDescription;
-        // setTaskList(newTaskList);
-        // console.log('id', id);
     }
 
 
-    const addTask = useCallback((newTaskName, newTaskDescription, state) => {
+    const addTask = (newTaskName, newTaskDescription, state) => {
         let id = newTaskId + 1;
         setNewTaskId(id);
         dispatch(newCard(newTaskName, newTaskDescription, state, id));
-    }, []);
+    };
 
     const removeTask = (index) => {
 

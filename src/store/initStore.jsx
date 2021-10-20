@@ -25,9 +25,11 @@ const newTaskList = [
 const initialState = { taskList: newTaskList };
 
 const rootReducer = (state, action) => {
+    let newTaskList = [];
     switch (action.type) {
+
         case (CARD_LIST_ACTIONS.add):
-            let newTaskList = [...state.taskList];
+            newTaskList = [...state.taskList];
             newTaskList.push(
                 {
                     state: action.payload.state,
@@ -37,12 +39,12 @@ const rootReducer = (state, action) => {
                 }
             );
             return { ...state, taskList: newTaskList };
-            
+
         case (CARD_LIST_ACTIONS.change):
-            // let newTaskList = [...state.taskList];
+            newTaskList = [...state.taskList];
             const elementTask = newTaskList.find(x => x.id === action.payload.id);
-            elementTask.title = action.payload.changeTaskName;
-            elementTask.description = action.payload.changeTaskDescription;
+            elementTask.title = action.payload.title;
+            elementTask.description = action.payload.description;
             return { ...state, taskList: newTaskList };
         default: return { ...state }
     }
@@ -55,7 +57,7 @@ const enhancers = [middlewareEnhancer];
 const composedEnhancers = composeWithDevTools(...enhancers);
 
 export const store = createStore(
-    rootReducer, 
+    rootReducer,
     initialState,
-    composedEnhancers   
+    composedEnhancers
 );
