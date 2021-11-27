@@ -7,6 +7,50 @@
     box-sizing: border-box;
 }
 
+.app {
+    position: absolute;
+}
+
+.card__item-button {
+    display: flex;
+    justify-content: space-around;
+}
+
+.button__transfer {
+    padding: 7px;
+    border: 0;
+    border-radius: 4px;
+    box-shadow: 0 0 5px 0 rgba(17, 13, 13, 1);
+    font-family: Bradley Hand;
+    font-weight: normal;
+    font-size: 14px;
+    transition: 0.3s;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    &:active {
+        transform: scale(1);
+    }
+}
+
+.transfer__progress {
+    background-color: #6a96e7;
+}
+
+.transfer__done {
+    background-color: #91c99a;
+}
+
+.transfer__todo {
+    background-color: #e76a89;
+}
+
+.done__top {
+    margin-top: 20px;
+}
+
 .header,
 .footer {
     color: rgb(19, 221, 120);
@@ -30,7 +74,6 @@
     font-size: 60px;
     color: white;
     z-index: 1000;
-    position: relative;
     width: 100%;
 }
 
@@ -49,13 +92,6 @@
 .remove__task:active {
     box-shadow: inset 0 0 20px 0 rgba(17, 13, 13, 0.8);
     transform: scale(0.9);
-}
-
-#root {
-    padding: 100px 0;
-    font-size: 12px;
-    width: 100wh;
-    height: 100vh;
 }
 .visitca {
     font-family: relative sans-serif;
@@ -92,24 +128,29 @@
     box-shadow: 0 0 20px 5px rgba(17, 13, 13, 0.8);
 }
 
-
-#root {
+.app {
     font-family: Arial, Helvetica, sans-serif;
     background: url('../assets/images/baground.png');
     background-size: cover;
     width: 100vw;
     height: 100vh;
     
+    padding: 100px 0;
+    font-size: 12px;
     background-position: center;
+    overflow-x: scroll;
+    
     position: fixed;
     background-repeat: repeat;
+
 }
-#root::after {
+.app::after {
     content: '';
     display: block;
     position: absolute;
     width: 100%;
     height: 100%;
+    position: fixed;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.45);
@@ -392,6 +433,7 @@ h3 {
     font-weight: 400;
     font-size: 11px;
     color: #666666;
+
 }
 .board-list {
     font-weight: 500;
@@ -433,12 +475,25 @@ h3 {
 .board-list__title {
     width: 100%;
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .board-item__list p {
-    margin-bottom: 8px;
+    margin-bottom: 20px;
     line-height: 18px;
+    display: flex;
+    flex-direction: column;
 }
+.board-list__title span,
+.board-item__list p span {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    margin-bottom: 2px;
+    line-height: 18px;
+    color: rgba(85, 82, 82, 0.6)
+}
+
 
 .modul-icon {
     background-color: rgba(0, 0, 0, 0);
@@ -547,7 +602,7 @@ h3 {
 }
 
 .done__green {
-    background-color: #73a87c;
+    background-color: #91c99a;
 }
 
 .board-progress__title {

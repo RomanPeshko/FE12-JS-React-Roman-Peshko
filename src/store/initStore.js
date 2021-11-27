@@ -20,6 +20,7 @@ const newTaskList = [
         finishDate: 0,
         userId: 0
     }
+
 ];
 
 const initialState = { taskList: newTaskList };
@@ -46,6 +47,17 @@ const rootReducer = (state, action) => {
             elementTask.title = action.payload.title;
             elementTask.description = action.payload.description;
             return { ...state, taskList: newTaskList };
+
+        case (CARD_LIST_ACTIONS.remove):
+            newTaskList = [...state.taskList];
+            newTaskList.splice(action.payload.index, 1);
+            return { ...state, taskList: newTaskList };
+
+        case (CARD_LIST_ACTIONS.transfer):
+            newTaskList = [...state.taskList];
+            newTaskList[action.payload.index].state = action.payload.state;
+            return { ...state, taskList: newTaskList };
+
         default: return { ...state }
     }
 }
